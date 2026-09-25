@@ -46,6 +46,14 @@ def _token_f1(reference: str, prediction: str) -> float:
 
 
 def _judge_answer(settings: Settings, question: str, reference: str, prediction: str) -> JudgeVerdict:
+    token_f1 = _token_f1(reference, prediction)
+    if os.getenv("RUN_LLM_JUDGE", "").lower() not in {"1", "true", "yes"}:
+        score = 5 if token_f1 >= 0.95 else 3 if token_f1 >= 0.5 else 1
+        return JudgeVerdict(
+            score=score,
+            correct=score >= 3,
+            reasoning="Deterministic token-F1 judge used; set RUN_LLM_JUDGE=1 for an LLM judge.",
+        )
     prompt = f"""
 Evaluate the model answer against the reference answer.
 
@@ -62,7 +70,7 @@ Return:
         llm = build_llm(settings=settings, temperature=0.0).with_structured_output(JudgeVerdict)
         return llm.invoke(prompt)
     except Exception:
-        score = 5 if _token_f1(reference, prediction) >= 0.95 else 3 if _token_f1(reference, prediction) >= 0.5 else 1
+        score = 5 if token_f1 >= 0.95 else 3 if token_f1 >= 0.5 else 1
         return JudgeVerdict(
             score=score,
             correct=score >= 3,
