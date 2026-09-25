@@ -1,4 +1,4 @@
-# Member Role Report — Day 10: Data Pipeline & Data Observability
+# Member Role Report - Day 10: Data Pipeline & Data Observability
 
 ## 1. Thông tin cá nhân
 
