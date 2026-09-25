@@ -1,0 +1,10 @@
+{
+  "threshold_days": 180,
+  "max_stale_ratio": 0.25,
+  "latest_published": "2026-06-03",
+  "oldest_published": "2021-09-25",
+  "stale_rows": 16,
+  "total_rows": 24,
+  "stale_ratio": 0.6666666666666666,
+  "is_fresh": false
+}
