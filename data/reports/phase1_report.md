@@ -8,13 +8,13 @@
 
 ## RAG evaluation
 
-| Metric | Value |
-|---|---:|
-| Samples | 10 |
+| Metric             | Value |
+|--------------------|------:|
+| Samples            |    10 |
 | Retrieval hit rate | 1.000 |
-| Mean token F1 | 0.963 |
-| Judge accuracy | 1.000 |
-| Mean judge score | 4.800 |
+| Mean token F1      | 0.963 |
+| Judge accuracy     | 1.000 |
+| Mean judge score   | 4.800 |
 
 ## Observability
 
